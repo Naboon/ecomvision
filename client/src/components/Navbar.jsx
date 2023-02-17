@@ -26,14 +26,13 @@ import { setMode } from 'state'
 import profileImage from 'assets/profile.jpeg'
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
-  const [anchorElement, setAnchorElement] = useState(null)
-
   const dispatch = useDispatch()
   const theme = useTheme()
 
-  const isOpen = Boolean(anchorElement)
-  const handleClick = (event) => setAnchorElement(event.currentTarget)
-  const handleClose = () => setAnchorElement(null)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const isOpen = Boolean(anchorEl)
+  const handleClick = (event) => setAnchorEl(event.currentTarget)
+  const handleClose = () => setAnchorEl(null)
 
   return (
     <AppBar
@@ -114,7 +113,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               />
             </Button>
             <Menu
-              anchorElement={anchorElement}
+              anchorEl={anchorEl}
               open={isOpen}
               onClose={handleClose}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
